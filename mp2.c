@@ -25,9 +25,7 @@ void inverter(char str[]) {
 
 void deslocar(char *str, int n) {
 
-    // scanf("%d", &n);
     int j;
-
     for (j = 0; str[j] != '\0'; j++) {
         if (str[j] >= 'a' && str[j] <= 'z') {
             int deslocamento = (str[j] - 'a' + n) % 26;
@@ -42,7 +40,7 @@ void deslocar(char *str, int n) {
             str[j] = deslocamento + 'A';
         }
         if (str[j] >= '0' && str[j] <= '9') {
-            int deslocamento = (str[j] - '0' + n) % 26;
+            int deslocamento = (str[j] - '0' + n) % 10;
             if (deslocamento < 0)
                 deslocamento += 10;
             str[j] = deslocamento + '0';
@@ -50,7 +48,7 @@ void deslocar(char *str, int n) {
     }
 }
 
-void trocarParEImpar(char *str) { //?????????????????????????
+void trocarParEImpar(char *str) { 
 
     int j;
     char temp;
@@ -76,27 +74,27 @@ void inverterCaixa(char *str) {
     }
 }
 
-void rotacionaDireita(char *str, int n) {
+void rotacionaDireita(char *str) {
+    
     char temp;
     int j;
     int fim = tamanho(str) - 1;
-
+    
     temp = str[fim];
     for (j = fim; j > 0; j--) {
-
         str[j] = str[j - 1];
     }
     str[0] = temp;
 }
 
-void rotacionaEsquerda(char *str, int n) {
+void rotacionaEsquerda(char *str) {
+    
     char temp;
     int j;
     int inicio = 0, fim = tamanho(str) - 1;
 
     temp = str[0];
     for (j = 0; j < fim; j++) {
-
         str[j] = str[j + 1];
     }
     str[fim] = temp;
@@ -111,12 +109,12 @@ void rotacionar(char *str, int n) {
 
     if (n > 0) {
         for (cont = 0; cont < n; cont++) {
-            rotacionaDireita(str, n);
+            rotacionaDireita(str);
         }
     }
     else if (n < 0) {
         for (cont = 0; cont < -n; cont++) {
-            rotacionaEsquerda(str, n);
+            rotacionaEsquerda(str);
         }
     }
 }
@@ -137,36 +135,31 @@ void trocarMetades(char *str) {
 
 int main() {
 
-    char str[10001], str2[10001];
+    char str[10001];
     int op, n;
     int continua = 1;
 
     scanf("%[^\n]", str);
-    scanf("%d", &op);
+    scanf(" %d", &op);
 
     while (continua) {
         switch (op) {
         case 1:
             inverter(str);
-
             break;
         case 2:
-            scanf("%d", &n);
+            scanf(" %d", &n);
             deslocar(str, n);
-
             break;
         case 3:
             trocarParEImpar(str);
-
             break;
         case 4:
             inverterCaixa(str);
-
             break;
         case 5:
-            scanf("%d", &n);
+            scanf(" %d", &n);
             rotacionar(str, n);
-
             break;
         case 6:
             trocarMetades(str);
