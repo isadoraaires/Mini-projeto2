@@ -1,4 +1,4 @@
-#include <stdio.h>
+#include <stdio.h> 
 
 int tamanho(char *str) {
 
