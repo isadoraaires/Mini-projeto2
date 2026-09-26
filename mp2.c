@@ -105,6 +105,10 @@ void rotacionar(char *str, int n) {
     int cont;
     int tam = tamanho(str);
 
+    if(tam == 0) {
+        return;
+    }
+    
     n = n % tam;
 
     if (n > 0) {
